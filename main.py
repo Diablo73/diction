@@ -1,8 +1,9 @@
 import json, requests
 from difflib import get_close_matches as gcm
+from colorama import Fore, Back, Style
 
-print("DICTIONARY\n(press enter to exit)\n")
-
+print(Back.BLUE + Fore.WHITE + "DICTIONARY" + Style.RESET_ALL)
+print("(press enter to exit)\n")
 
 def enter():
     print()
@@ -11,12 +12,12 @@ def enter():
         word = input("Enter your search word: ")
         op = defi(word)
         if word == "":
-            if input("EXIT!?!? Press enter again to end.") == "":
+            if input(Back.BLACK + Fore.RED + "EXIT!?!?" + Style.RESET_ALL + " Press enter again to end.") == "":
                 break
         elif type(op) == list:
             i = 1
             print()
-            print(op[0].title())
+            print(Back.GREEN + Fore.WHITE + op[0].title() + Style.RESET_ALL)
             if type(op[1]) == list:
                 for j in op[1]:
                     print(i, " -> ", j)
@@ -41,9 +42,9 @@ def defi(w):
                 return [l[i], dat[l[i]]]
             elif yn == "N" or yn == "n":
                 i += 1
-        return "'%s' ain't in my dictionary." %w
+        return Back.RED + Fore.WHITE + w + Style.RESET_ALL + " ain't in my dictionary."
     else:
-        return "Is '%s' a real word? Please double check it." %w
+        return "Is " + Back.YELLOW + Fore.WHITE + w + Style.RESET_ALL + " a real word? Please double check it."
 
 
 while True:
@@ -58,8 +59,8 @@ while True:
         enter()
         break
     elif lev == "":
-        if input("EXIT!?!? Press enter again to end.") == "":
+        if input(Back.BLACK + Fore.RED + "EXIT!?!?" + Style.RESET_ALL + " Press enter again to end.") == "":
             break
 print()
 
-print("END")
+print(Back.WHITE + Fore.BLACK + "END" + Style.RESET_ALL)
